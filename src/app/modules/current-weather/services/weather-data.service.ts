@@ -16,7 +16,7 @@ export class WeatherDataService {
   }
 
   private weatherData$ = new BehaviorSubject<IWeather>(this.initWeatherData);
-
+  private savedNames: string[] = [];
   private apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
   private imgBase = 'https://openweathermap.org/img/w/'
   private apiKey = '4c94a206e188350763e158ba04ae7674'; //refactor
@@ -62,7 +62,14 @@ export class WeatherDataService {
     this.updateWeatherFromApi(queryParams);
   }
 
-  updateWeatherByCity(city: string, country?: string): void {
+  updateWeatherByCity(search: string): void {
+    const inputStrArr = search.split(',').map((s) => s.trim())
+    const city = inputStrArr[0];
+    const country = inputStrArr.length > 1 ? inputStrArr[1] : undefined
+    
+    if (this.savedNames.includes(city)) {
+      return;
+    }
     const queryParams = new HttpParams()
     .set(
       'q',
@@ -82,6 +89,7 @@ export class WeatherDataService {
       .subscribe({
         next: (weatherData: IWeatherDTO) => {
         const parsedData = this.parseWeatherData(weatherData);
+        this.savedNames.push(parsedData.name);
         this.setWeatherData(parsedData);
       },
         error: (err) => {
