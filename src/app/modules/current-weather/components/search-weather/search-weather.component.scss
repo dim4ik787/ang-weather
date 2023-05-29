@@ -1,0 +1,57 @@
+@import 'base';
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid $dark-white;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.city-form {
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.city-form-error {
+  color: $error;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+button[type="submit"] {
+  align-self: flex-end;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: $light-green;
+  color: $white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: $green;
+}
+
+button[type="submit"]:disabled {
+  background-color: $dark-white;
+  color: $black;
+  cursor: not-allowed;
+}

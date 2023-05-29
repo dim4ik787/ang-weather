@@ -1,0 +1,7 @@
+<div *ngIf="weather" class="weather-summary" (click)="onClick()">
+    <div class="city">{{ weather.name }}</div>
+    <div class="temperature">{{ weather.temperature }}°C</div>
+    <div class="icon">
+      <img [src]="weather.image" alt="Weather Icon" />
+    </div>
+</div>
