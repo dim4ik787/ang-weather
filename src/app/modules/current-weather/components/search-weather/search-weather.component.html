@@ -1,0 +1,26 @@
+<div class="search-container">
+    <form class="city-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <label>
+          <span>City or CityID or ZIP code</span>
+          <input
+            type="text"
+            name="city"
+            class="input"
+            required
+            minlength="3"
+            ngModel
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            #city="ngModel"
+          />
+          <ng-container *ngIf="city.invalid && city.touched">
+            <div class="city-form-error" *ngIf="city.errors?.['minlength']">
+              Minimum length is 3.
+            </div>
+            <div class="city-form-error" *ngIf="city.errors?.['required']">
+              City is required.
+            </div>
+          </ng-container>
+          <button type="submit" [disabled]="form.invalid">Search</button>
+        </label>
+    </form>
+</div>

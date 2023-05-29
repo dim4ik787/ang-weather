@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <app-preview-weather *ngFor="let weather of cashedWeather; trackBy: trackById" [weather]="weather" (weatherClicked)="displaySelectedWeather($event)"></app-preview-weather>
+    <app-search-weather></app-search-weather>
+</div>
+
+<div class="weather-card">
+    <h2 class="weather-title">{{ weather.name }}</h2>
+  <div class="weather-info">
+    <div *ngIf="weather.temperature" class="temperature">{{ weather.temperature }}°C</div>
+    <div class="description">{{ weather.description }}</div>
+    <img *ngIf="weather.image" [src]="weather.image" alt="Weather Icon" />
+  </div>
+  <div class="details" *ngIf="weather.detail">
+    <app-detail-item
+      *ngFor="let item of weather.detail; "
+      [detail]="item"
+    ></app-detail-item>
+  </div>
+</div>

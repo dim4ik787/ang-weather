@@ -1,0 +1,51 @@
+@import "base";
+
+.weather-card {
+    background-color: $dark-white;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px $weather-card-shadow;
+    margin-top: 5px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 8px;
+    margin-top: 16px;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.temperature {
+    font-size: 48px;
+    font-weight: bold;
+    margin-right: 16px;
+}
+
+.description {
+    font-size: 20px;
+}
+
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    margin-left: auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: stretch;
+    min-height: 150px;
+    gap: 10px;
+}
+
+.weather-title {
+    text-align: center;
+}
